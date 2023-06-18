@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Trivia App</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- HEADER WITH NAV: CREATION OF TRIVIA -->
+      <header class="header">
+        <div class="logo">TRIVIA</div>
+        <nav class="trivia_creation">
+          <!-- CATEGORY -->
+          <div class="category settings">
+            <label for="category">Category</label>
+            <select class="category__options">
+              <option value="books" id="books">Books</option>
+              <option value="films" id="films">Films</option>
+              <option value="music" id="music">Music</option>
+              <option value="mythology" id="mythology">Mythology</option>
+              <option value="sports" id="sports">Sports</option>
+              <option value="geography" id="geography">Geography</option>
+            </select>
+          </div>
+          <!-- TYPE OF QUESTIONS -->
+          <div class="type settings">
+            <label for="type">Question type</label>
+            <select class="category__type">
+              <option value="multiple" id="multiple">Multiple choice</option>
+              <option value="trueFalse" id="trueFalse">True or False</option>
+            </select>
+          </div>
+          <!-- DIFFICULTY -->
+          <div class="difficulty settings">
+            <label for="difficulty">Difficulty</label>
+            <select class="category__difficulty">
+              <option value="easy" id="easy">Easy</option>
+              <option value="medium" id="medium">Medium</option>
+              <option value="hard" id="hard">Hard</option>
+            </select>
+          </div>
+          <button class="create">Create!</button>
+        </nav>
+      </header>
+      <!-- end of HEADER WITH NAV: CREATION OF TRIVIA -->
+      <h2>TEST YOUR KNOWLEDGE!</h2>
+      <main class="trivia__creation"></main>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
