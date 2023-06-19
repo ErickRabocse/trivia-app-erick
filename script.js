@@ -30,31 +30,39 @@ const showData = (resultados) => {
   let body = "";
   resultados.forEach((element, index) => {
     body += `
-        <div class="tivia">
+        <div class="trivia">
           <div class="trivia__question">
             <h4 class="trivia__question--description">${index + 1} ${
       element.question
     }</h4>
             <ul class="trivia__list">
               <li class="trivia__list--el">
-                <input type="radio" name="answer" class="trivia__answer" id="a">${
-                  element.incorrect_answers[0]
-                }</input>
+                <input type="radio" name="${
+                  index + 1
+                } " class="trivia__answer" id="a">${
+      element.incorrect_answers[0]
+    }</input>
               </li>
               <li class="trivia__list--el">
-                <input type="radio" name="answer" class="trivia__answer" id="b">${
-                  element.incorrect_answers[1]
-                }</input>
+                <input type="radio" name="${
+                  index + 1
+                } " class="trivia__answer" id="b">${
+      element.incorrect_answers[1]
+    }</input>
               </li>
               <li>
-                <input type="radio" name="answer" class="trivia__answer" id="c">${
-                  element.incorrect_answers[2]
-                }</input>
+                <input type="radio" name="${
+                  index + 1
+                } " class="trivia__answer" id="c">${
+      element.incorrect_answers[2]
+    }</input>
               </li>
               <li class="trivia__list--el">
-                <input type="radio" name="answer" class="trivia__answer" id="d">${
-                  element.correct_answer
-                }</input>
+                <input type="radio" name="${
+                  index + 1
+                } " class="trivia__answer" id="d">${
+      element.correct_answer
+    }</input>
               </li>
           </ul>
           </div>
@@ -62,4 +70,8 @@ const showData = (resultados) => {
     `;
   });
   triviaSection.innerHTML = body;
+  triviaSection.insertAdjacentHTML(
+    "beforeend",
+    `<button id="submit">submit</button>`
+  );
 };

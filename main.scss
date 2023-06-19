@@ -7,20 +7,23 @@
   box-sizing: border-box;
 }
 
-/* Primary Color: */
-:root {
-  --main-pink-color: #f72585;
-  --accent-blue: #4361ee;
-  --light-green: #4cc9f0;
-  --bg-grey-color: #f5f5f5;
-  --text-grey-color: #333333;
-  --border-grey-color: #cccccc;
-}
+/* Primary Color Variables: */
+
+$main-pink-color: #f72585;
+$accent-blue: #4361ee;
+$light-green: #4cc9f0;
+$bg-grey-color: #f5f5f5;
+$text-grey-color: #333333;
+$border-grey-color: #cccccc;
 
 /* GENERAL */
 body {
-  background-color: var(--bg-grey-color);
+  background-color: $bg-grey-color;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h2 {
+  text-align: center;
+  margin: 20px 0;
 }
 /* CONTAINER */
 
@@ -31,15 +34,14 @@ body {
   display: flex;
   height: 50px;
   align-items: center;
-  background-color: var(--main-pink-color);
+  background-color: $main-pink-color;
   color: white;
 }
 .trivia_creation {
   height: 30px;
   display: flex;
   margin-left: auto;
-  /* min-width: 65%; */
-  /* border: 3px solid white; */
+  margin-right: 20px;
 }
 .settings {
   display: flex;
@@ -50,7 +52,6 @@ label {
 }
 .create {
   background-color: white;
-  color: var(--main-pink-color);
   padding: 10px;
   margin-left: 10px;
   border: none;
@@ -59,21 +60,55 @@ label {
   font-weight: bold;
 }
 .create:hover {
-  background-color: var(--main-pink-color);
+  background-color: $main-pink-color;
   color: white;
   outline: 1px solid white;
   cursor: pointer;
 }
 /* BODY */
-
-//  TRIVIA CCONTAINERtivia__container
-.tivia {
-  padding: 10px 20px;
-  &__question {
-    margin-bottom: 20px;
-  }
+body {
+  display: flex;
+  //   align-items: center;
 }
 
+//  TRIVIA CCONTAINERtivia__container
+.trivia {
+  padding: 10px 20px;
+  width: 80%;
+  margin: 0 auto;
+  &__question {
+    margin-bottom: 10px;
+    &--description {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid $accent-blue;
+      color: $accent-blue;
+    }
+  }
+  &__list--el {
+    margin: 8px 0;
+  }
+}
 ul {
   list-style-type: none;
+}
+// BUTTON
+#submit {
+  margin-left: 40%;
+  padding: 10px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  border: 1px solid $accent-blue;
+  background-color: white;
+  color: $accent-blue;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  transition: transform 0.3s;
+
+  &:hover {
+    color: white;
+    background-color: $accent-blue;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
 }
