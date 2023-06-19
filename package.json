@@ -1,0 +1,15 @@
+{
+  "name": "0_trivia-app-erick",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "compile": "sass --watch --no-source-map main.scss style.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.63.4"
+  },
+  "devDependencies": {},
+  "description": ""
+}

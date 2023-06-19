@@ -30,30 +30,34 @@ const showData = (resultados) => {
   let body = "";
   resultados.forEach((element, index) => {
     body += `
-        <div class="tivia__container">
-          <p class="trivia__question">${index + 1} ${element.question}</p>
-          <ul class="trivia__list">
-            <li class="trivia__list--el">
+        <div class="tivia">
+          <div class="trivia__question">
+            <h4 class="trivia__question--description">${index + 1} ${
+      element.question
+    }</h4>
+            <ul class="trivia__list">
+              <li class="trivia__list--el">
                 <input type="radio" name="answer" class="trivia__answer" id="a">${
                   element.incorrect_answers[0]
                 }</input>
-            </li>
-            <li class="trivia__list--el">
+              </li>
+              <li class="trivia__list--el">
                 <input type="radio" name="answer" class="trivia__answer" id="b">${
                   element.incorrect_answers[1]
                 }</input>
-            </li>
-            <li>
+              </li>
+              <li>
                 <input type="radio" name="answer" class="trivia__answer" id="c">${
                   element.incorrect_answers[2]
                 }</input>
-            </li>
-            <li class="trivia__list--el">
+              </li>
+              <li class="trivia__list--el">
                 <input type="radio" name="answer" class="trivia__answer" id="d">${
                   element.correct_answer
                 }</input>
-            </li>
+              </li>
           </ul>
+          </div>
         </div>
     `;
   });
