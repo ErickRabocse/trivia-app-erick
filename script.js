@@ -4,6 +4,22 @@
 Cosas a tener en cuenta:Github pages 
 Extras: SCSS, BEM, Webpack */
 
+/*
+--> CATEGORY
+books= 10, 
+films= 11,
+music= 12,
+mythology= 20,
+sports=21,
+geography=22
+
+--> DIFFICULTY
+easy, medium, hard
+
+--> TYPE
+multiple, boolean (easy & medium ONLY)
+*/
+
 const api =
   "https://opentdb.com/api.php?amount=10&category=10&difficulty=easy&type=multiple";
 const triviaSection = document.querySelector(".trivia__creation");
@@ -71,9 +87,15 @@ const showData = (resultados) => {
     "beforeend",
     `<button id="submit">submit</button>`
   );
-  //SHUFFLE ANSWERS
-  let myList = document.querySelector(".trivia__list");
-  for (let i = myList.children.length; i >= 0; i--) {
-    myList.appendChild(myList.children[(Math.random() * i) | 0]);
-  }
+  //SHUFFLE ANSWERS only first
+  let ancestor = document.querySelector(".trivia__creation");
+  let descendents = ancestor.getElementsByTagName("ul");
+  let arrayOfLists = Array.from(descendents);
+  // console.log(arrayOfLists);
+  arrayOfLists.forEach((el) => {
+    for (let i = el.children.length; i >= 0; i--) {
+      el.appendChild(el.children[(Math.random() * i) | 0]);
+    }
+    // console.log(el);
+  });
 };
