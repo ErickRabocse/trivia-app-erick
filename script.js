@@ -37,10 +37,8 @@ const values = () => {
   const type_val = typ[type.value];
   //CREATION OF COSTUM API
   setArray = [cat_val, dif_val, type_val];
-  console.log(setArray);
   costumApi = `https://opentdb.com/api.php?amount=10&category=${setArray[0]}&difficulty=${setArray[1]}&type=${setArray[2]}`;
-  console.log(costumApi);
-  //FETCHING THE COSTUM API
+  //FETCHING THE COSTUME API
   let triviaAPI = fetch(costumApi);
   triviaAPI
     .then((response) => response.json())
@@ -48,6 +46,9 @@ const values = () => {
       let resultados = data.results;
       /* DISPPLAYING RESULTS ON SCREEN */
       showData(resultados);
+      //REGISTER POINTS EARNED
+      const resultsBtn = document.querySelector("#submit");
+      resultsBtn.addEventListener("click", gradeResults);
     })
     .catch((error) => console.log(error, error.message));
 };
@@ -80,17 +81,17 @@ const showData = (resultados) => {
       element.incorrect_answers[1]
     }</input>
               </li>
-              <li>
+              <li class="trivia__list--el">
                 <input type="radio" name="${
                   index + 1
                 } " class="trivia__answer" id="c">${
       element.incorrect_answers[2]
     }</input>
               </li>
-              <li class="trivia__list--el">
+              <li class="trivia__list--el correctOne">
                 <input type="radio" name="${
                   index + 1
-                } " class="trivia__answer" id="d" class="correctOne">${
+                } " class="correctOne trivia__answer" id="d">${
       element.correct_answer
     }</input>
               </li>
@@ -117,4 +118,31 @@ const showData = (resultados) => {
     }
     // console.log(el);
   });
+};
+
+const gradeResults = () => {
+  //GET RESULTS
+  let ancestor = document.querySelector(".trivia__creation");
+  let descendents = ancestor.getElementsByTagName("ul");
+  let arrayOfLists = Array.from(descendents);
+  let results = 0;
+  //Looping through an array that contains the lists of all answers
+  arrayOfLists.forEach((el) => {
+    console.log("lists of answers: ", el);
+    //Looping through every single answer
+    let newArrOfLists = Array.from(el.children);
+    newArrOfLists.forEach((el) => {
+      console.log("element: ", el.innerText);
+      const answer = el.children;
+      // console.log("answer: ", answer);
+      // console.log("answer 0 index: ", answer[0]);
+      console.log("answer 0 index, ID: ", answer[0].id);
+      console.log("new option");
+      // if (el.classList[0] === "correctOne") {
+      if (answer[0].classList[0] === "correctOne") {
+        results += 10;
+      }
+    });
+  });
+  console.log(results);
 };
