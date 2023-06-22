@@ -2,38 +2,57 @@
     https://opentdb.com/api.php?amount=10&category=10&difficulty=medium&type=multiple
 --> Cada pregunta correcta vale 100 puntos (Mostrar puntaje final)
 Cosas a tener en cuenta:Github pages 
-Extras: SCSS, BEM, Webpack */
-
-/*
---> CATEGORY
-books= 10, 
-films= 11,
-music= 12,
-mythology= 20,
-sports=21,
-geography=22
-
---> DIFFICULTY
-easy, medium, hard
-
---> TYPE
-multiple, boolean (easy & medium ONLY)
-*/
+Extras: Webpack */
 
 const api =
   "https://opentdb.com/api.php?amount=10&category=10&difficulty=easy&type=multiple";
+
 const triviaSection = document.querySelector(".trivia__creation");
+//MODIFYING API ACCORDING TO TRIVIA CREATION SETTINGS
+const category = document.querySelector(".category__options");
+const difficulty = document.querySelector(".category__difficulty");
+const type = document.querySelector(".category__type");
+const createBtn = document.querySelector(".create");
 
-const triviaAPI = fetch(api);
+const values = () => {
+  const cat = {
+    books: 10,
+    films: 11,
+    music: 12,
+    mythology: 20,
+    sports: 21,
+    geography: 22,
+  };
+  const dif = {
+    easy: "easy",
+    medium: "medium",
+    hard: "hard",
+  };
+  const typ = {
+    multiple: "multiple",
+    boolean: "boolean",
+  };
+  const cat_val = cat[category.value];
+  const dif_val = dif[difficulty.value];
+  const type_val = typ[type.value];
+  //CREATION OF COSTUM API
+  setArray = [cat_val, dif_val, type_val];
+  console.log(setArray);
+  costumApi = `https://opentdb.com/api.php?amount=10&category=${setArray[0]}&difficulty=${setArray[1]}&type=${setArray[2]}`;
+  console.log(costumApi);
+  //FETCHING THE COSTUM API
+  let triviaAPI = fetch(costumApi);
+  triviaAPI
+    .then((response) => response.json())
+    .then((data) => {
+      let resultados = data.results;
+      /* DISPPLAYING RESULTS ON SCREEN */
+      showData(resultados);
+    })
+    .catch((error) => console.log(error, error.message));
+};
 
-triviaAPI
-  .then((response) => response.json())
-  .then((data) => {
-    let resultados = data.results;
-    /* DISPPLAYING RESULTS ON SCREEN */
-    showData(resultados);
-  })
-  .catch((error) => console.log(error, error.message));
+createBtn.addEventListener("click", values);
 
 //Function that shows data on the site
 const showData = (resultados) => {
@@ -87,7 +106,7 @@ const showData = (resultados) => {
     "beforeend",
     `<button id="submit">submit</button>`
   );
-  //SHUFFLE ANSWERS only first
+  //SHUFFLE ANSWERS
   let ancestor = document.querySelector(".trivia__creation");
   let descendents = ancestor.getElementsByTagName("ul");
   let arrayOfLists = Array.from(descendents);
