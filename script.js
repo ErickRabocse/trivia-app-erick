@@ -66,26 +66,36 @@ const showData = (resultados) => {
             <h4 class="trivia__question--description">${index + 1} ${
       element.question
     }</h4>
-            <input type="radio" name="${
-              index + 1
-            } " class="trivia__answer" id="a" >${
+            <ul class="trivia__list">
+              <li class="trivia__list--el">
+                <input type="radio" name="${
+                  index + 1
+                } " class="trivia__answer" id="a" >${
       element.incorrect_answers[0]
-    }</input></br>
-            <input type="radio" name="${
-              index + 1
-            } " class="trivia__answer" id="b">${
+    }</input>
+              </li>
+              <li class="trivia__list--el">
+                <input type="radio" name="${
+                  index + 1
+                } " class="trivia__answer" id="b">${
       element.incorrect_answers[1]
-    }</input></br>
-            <input type="radio" name="${
-              index + 1
-            } " class="trivia__answer" id="c">${
+    }</input>
+              </li>
+              <li class="trivia__list--el">
+                <input type="radio" name="${
+                  index + 1
+                } " class="trivia__answer" id="c">${
       element.incorrect_answers[2]
-    }</input></br>
-            <input type="radio" name="${
-              index + 1
-            } " class="correctOne trivia__answer" id="d">${
+    }</input>
+              </li>
+              <li class="trivia__list--el correctOne">
+                <input type="radio" name="${
+                  index + 1
+                } " class="correctOne trivia__answer" id="d">${
       element.correct_answer
     }</input>
+              </li>
+          </ul>
           </div>
         </div>
     `;
@@ -101,7 +111,6 @@ const showData = (resultados) => {
   let ancestor = document.querySelector(".trivia__creation");
   let descendents = ancestor.getElementsByTagName("ul");
   let arrayOfLists = Array.from(descendents);
-  // console.log(arrayOfLists);
   arrayOfLists.forEach((el) => {
     for (let i = el.children.length; i >= 0; i--) {
       el.appendChild(el.children[(Math.random() * i) | 0]);
@@ -129,3 +138,34 @@ const gradeResults = () => {
   });
   console.log(results);
 };
+
+// const gradeResults = () => {
+//   //GET RESULTS
+//   //Selecting all the lists of possible answers
+//   let ancestor = document.querySelector(".trivia__creation");
+//   let descendents = ancestor.getElementsByTagName("ul");
+//   let arrayOfLists = Array.from(descendents);
+//   //Initializing counter of points to be scored
+//   let results = 0;
+//   //Looping through an array that contains the lists of all answers
+//   arrayOfLists.forEach((el) => {
+//     console.log("lists of answers: ", el);
+//     //Looping through every single answer
+//     let newArrOfLists = Array.from(el.children);
+//     newArrOfLists.forEach((el) => {
+//       const answer = el.children;
+//       console.log("answer 0 index: ", answer[0]); //gets id --> answer[0].id
+//       //CHECKING IF THE OPTION WAS SELECTED
+//       let findSelected = () => {
+//         answer[0].setAttribute("checked", "checked");
+//         console.log("RESULT???", answer[0].checked);
+//       };
+//       el.addEventListener("change", findSelected);
+//       findSelected();
+//       if (answer[0].classList[0] === "correctOne") {
+//         results += 10;
+//       }
+//     });
+//   });
+//   console.log(results);
+// };
