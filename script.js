@@ -119,17 +119,13 @@ const gradeResults = () => {
   let results = 0;
   //Looping through an array that contains the lists of all answers
   arrayOfAnswers.forEach((el) => {
-    console.log("Answer: ", el);
-    //Looping through every single answer
     let findSelected = () => {
-      el.setAttribute("checked", "checked");
-      console.log("RESULT???", el.checked);
+      if (el.checked && el.classList[0] === "correctOne") {
+        results += 10;
+      }
     };
     el.addEventListener("change", findSelected);
     findSelected();
-    if (el.classList === "correctOne") {
-      results += 10;
-    }
   });
   console.log(results);
 };
