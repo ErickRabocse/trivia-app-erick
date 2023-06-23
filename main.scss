@@ -101,14 +101,13 @@ input[type="radio"]:first-child {
 }
 // BUTTON
 #submit {
-  margin-left: 40%;
   padding: 10px;
   font-size: 1.2rem;
   border-radius: 10px;
   border: 1px solid $accent-blue;
   background-color: white;
   color: $accent-blue;
-  margin-top: -10px;
+  margin-top: 10px;
   margin-bottom: 20px;
   transition: transform 0.3s;
 
@@ -117,5 +116,64 @@ input[type="radio"]:first-child {
     background-color: $accent-blue;
     transform: scale(1.1);
     cursor: pointer;
+  }
+}
+
+//SCORE RESULT
+.result {
+  font-size: 1.2rem;
+  background-color: #4ccaf041;
+  margin-left: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  color: $accent-blue;
+}
+
+// TRIVIA CREATION SECTION
+.trivia__creation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+// ANNOUNCEMENT SECTION
+.announcement {
+  width: 60vw;
+  color: $accent-blue;
+  text-align: center;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+// SPINNER SECTION
+/* SPINNER */
+.spinner {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  /* transform: translateX(-50%) translateZ(0); */
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  border-top: 5px solid $light-green;
+  border-right: 6px solid $light-green;
+  border-bottom: 5px solid $main-pink-color;
+  border-left: 6px solid $main-pink-color;
+  animation: spinner 1.5s infinite linear;
+  margin-top: -150px;
+}
+
+@keyframes spinner {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translateX(-50%) rotate(360deg);
   }
 }

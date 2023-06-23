@@ -1,18 +1,18 @@
 /* Trivia App: sitio web que genere trivias API: https://opentdb.com/api_config.php
     https://opentdb.com/api.php?amount=10&category=10&difficulty=medium&type=multiple
---> Cada pregunta correcta vale 100 puntos (Mostrar puntaje final)
-Cosas a tener en cuenta:Github pages 
-Extras: Webpack */
+Cosas a tener en cuenta:Github pages, (Webpack) */
 
 const api =
   "https://opentdb.com/api.php?amount=10&category=10&difficulty=easy&type=multiple";
 
 const triviaSection = document.querySelector(".trivia__creation");
+const announcement = document.querySelector(".announcement");
 //MODIFYING API ACCORDING TO TRIVIA CREATION SETTINGS
 const category = document.querySelector(".category__options");
 const difficulty = document.querySelector(".category__difficulty");
 const type = document.querySelector(".category__type");
 const createBtn = document.querySelector(".create");
+const spinnerEl = document.querySelector(".spinner");
 
 const values = () => {
   const cat = {
@@ -43,12 +43,18 @@ const values = () => {
   triviaAPI
     .then((response) => response.json())
     .then((data) => {
+      //remove spinner
+      spinnerEl.remove();
       let resultados = data.results;
-      /* DISPPLAYING RESULTS ON SCREEN */
-      showData(resultados);
-      //REGISTER POINTS EARNED
-      const resultsBtn = document.querySelector("#submit");
-      resultsBtn.addEventListener("click", gradeResults);
+      if (typ[type.value] === "boolean") {
+        announcement.innerText = "THIS FEATURE WILL BE AVAILABLE SOON";
+      } else {
+        /* DISPPLAYING RESULTS ON SCREEN */
+        showData(resultados);
+        //REGISTER POINTS EARNED
+        const resultsBtn = document.querySelector("#submit");
+        resultsBtn.addEventListener("click", gradeResults);
+      }
     })
     .catch((error) => console.log(error, error.message));
 };
@@ -105,7 +111,12 @@ const showData = (resultados) => {
   //BUTTON
   triviaSection.insertAdjacentHTML(
     "beforeend",
-    `<button id="submit">submit</button>`
+    `
+    <div class="footer">
+      <button id="submit">submit</button>
+      <span class="result">Points: </span>
+    </div>
+    `
   );
   //SHUFFLE ANSWERS
   let ancestor = document.querySelector(".trivia__creation");
@@ -136,7 +147,9 @@ const gradeResults = () => {
     el.addEventListener("change", findSelected);
     findSelected();
   });
-  console.log(results);
+  let resultDisplay = document.querySelector(".result");
+  resultDisplay.insertAdjacentText("beforeend", results);
+  // resultDisplay.setAttribute("readonly", "readonly");
 };
 
 // const gradeResults = () => {
