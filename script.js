@@ -114,7 +114,8 @@ const showData = (resultados) => {
     `
     <div class="footer">
       <button id="submit">submit</button>
-      <span class="result">Points: </span>
+      <span class="points">Points: </span>
+      <span class="result"></span>
     </div>
     `
   );
@@ -148,37 +149,6 @@ const gradeResults = () => {
     findSelected();
   });
   let resultDisplay = document.querySelector(".result");
-  resultDisplay.insertAdjacentText("beforeend", results);
+  resultDisplay.innerText = results;
   // resultDisplay.setAttribute("readonly", "readonly");
 };
-
-// const gradeResults = () => {
-//   //GET RESULTS
-//   //Selecting all the lists of possible answers
-//   let ancestor = document.querySelector(".trivia__creation");
-//   let descendents = ancestor.getElementsByTagName("ul");
-//   let arrayOfLists = Array.from(descendents);
-//   //Initializing counter of points to be scored
-//   let results = 0;
-//   //Looping through an array that contains the lists of all answers
-//   arrayOfLists.forEach((el) => {
-//     console.log("lists of answers: ", el);
-//     //Looping through every single answer
-//     let newArrOfLists = Array.from(el.children);
-//     newArrOfLists.forEach((el) => {
-//       const answer = el.children;
-//       console.log("answer 0 index: ", answer[0]); //gets id --> answer[0].id
-//       //CHECKING IF THE OPTION WAS SELECTED
-//       let findSelected = () => {
-//         answer[0].setAttribute("checked", "checked");
-//         console.log("RESULT???", answer[0].checked);
-//       };
-//       el.addEventListener("change", findSelected);
-//       findSelected();
-//       if (answer[0].classList[0] === "correctOne") {
-//         results += 10;
-//       }
-//     });
-//   });
-//   console.log(results);
-// };

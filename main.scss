@@ -16,6 +16,12 @@ $bg-grey-color: #f5f5f5;
 $text-grey-color: #333333;
 $border-grey-color: #cccccc;
 
+/* BODY */
+body {
+  display: flex;
+  //   align-items: center;
+}
+
 /* GENERAL */
 body {
   background-color: $bg-grey-color;
@@ -26,6 +32,10 @@ h2 {
   margin: 20px 0;
 }
 /* CONTAINER */
+// .container {
+//   height: 100vh;
+//   margin-bottom: 20px;
+// }
 
 /* HEADER / NAV */
 .header {
@@ -36,28 +46,82 @@ h2 {
   align-items: center;
   background-color: $main-pink-color;
   color: white;
+  @media (max-width: 810px) {
+    flex-direction: column;
+    height: 120px;
+    padding: 0;
+  }
+  @media (max-width: 510px) {
+    height: 300px;
+  }
 }
-.trivia_creation {
-  height: 30px;
+.logo {
+  @media (max-width: 810px) {
+    margin: 10px 0 10px 0;
+  }
+}
+.trivia__settings {
   display: flex;
   margin-left: auto;
-  margin-right: 20px;
+  margin-right: 10px;
+  @media (max-width: 810px) {
+    margin: 0 auto;
+  }
+  @media (max-width: 510px) {
+    flex-wrap: wrap;
+  }
+}
+.category__options,
+.category__difficulty,
+.category__type,
+label {
+  height: 30px;
+  margin: auto 0;
+  @media (max-width: 510px) {
+    margin: 0 100px;
+  }
+}
+.categories {
+  flex-direction: row;
+  width: 400px;
+}
+//TRIVIA SETTINGS BUTTONS
+.trivia__result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .settings {
   display: flex;
   margin-left: 30px;
+  width: 100%;
+  @media (max-width: 810px) {
+    flex-direction: column;
+  }
 }
 label {
-  margin-right: 5px;
+  margin-right: 3px;
+  @media (max-width: 810px) {
+    margin-top: 5px;
+    text-align: start;
+  }
 }
+//button that creates surveys
 .create {
+  height: 30px;
   background-color: white;
   padding: 10px;
-  margin-left: 10px;
+  margin: auto 30px;
   border: none;
   border-radius: 6px;
   line-height: 10px;
   font-weight: bold;
+  @media (max-width: 810px) {
+    height: 40px;
+  }
+  @media (max-width: 510px) {
+    margin: 10px auto;
+  }
 }
 .create:hover {
   background-color: $main-pink-color;
@@ -65,13 +129,8 @@ label {
   outline: 1px solid white;
   cursor: pointer;
 }
-/* BODY */
-body {
-  display: flex;
-  //   align-items: center;
-}
 
-//  TRIVIA CCONTAINERtivia__container
+//  TRIVIA CONTAINER
 .trivia {
   padding: 10px 20px;
   width: 80%;
@@ -99,6 +158,18 @@ input[type="radio"] {
 input[type="radio"]:first-child {
   margin-top: 10px;
 }
+// TRIVIA CREATION SECTION
+.trivia__creation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  @media (max-width: 510px) {
+    margin-bottom: 200px;
+  }
+}
+
 // BUTTON
 #submit {
   padding: 10px;
@@ -123,19 +194,15 @@ input[type="radio"]:first-child {
 .result {
   font-size: 1.2rem;
   background-color: #4ccaf041;
-  margin-left: 20px;
+  margin-left: 3px;
   padding: 10px;
   border-radius: 10px;
   color: $accent-blue;
 }
-
-// TRIVIA CREATION SECTION
-.trivia__creation {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.points {
+  margin-left: 20px;
 }
+
 // ANNOUNCEMENT SECTION
 .announcement {
   width: 60vw;
@@ -156,7 +223,6 @@ input[type="radio"]:first-child {
   position: absolute;
   left: 50%;
   top: 46%;
-  /* transform: translateX(-50%) translateZ(0); */
   border-radius: 50%;
   width: 150px;
   height: 150px;
@@ -166,6 +232,9 @@ input[type="radio"]:first-child {
   border-left: 6px solid $main-pink-color;
   animation: spinner 1.5s infinite linear;
   margin-top: -150px;
+  @media (max-width: 810px) {
+    margin-top: 40px;
+  }
 }
 
 @keyframes spinner {
