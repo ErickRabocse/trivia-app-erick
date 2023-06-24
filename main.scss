@@ -56,8 +56,13 @@ h2 {
   }
 }
 .logo {
+  font-size: 1.6rem;
+  font-weight: bold;
   @media (max-width: 810px) {
     margin: 10px 0 10px 0;
+  }
+  @media (max-width: 510px) {
+    margin: 5px;
   }
 }
 .trivia__settings {
@@ -166,7 +171,7 @@ input[type="radio"]:first-child {
   flex-direction: column;
 
   @media (max-width: 510px) {
-    margin-bottom: 200px;
+    margin-bottom: 100px;
   }
 }
 
@@ -233,7 +238,7 @@ input[type="radio"]:first-child {
   animation: spinner 1.5s infinite linear;
   margin-top: -150px;
   @media (max-width: 810px) {
-    margin-top: 40px;
+    margin-top: 60px;
   }
 }
 

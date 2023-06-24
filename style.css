@@ -48,9 +48,18 @@ h2 {
   }
 }
 
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
 @media (max-width: 810px) {
   .logo {
     margin: 10px 0 10px 0;
+  }
+}
+@media (max-width: 510px) {
+  .logo {
+    margin: 5px;
   }
 }
 
@@ -185,7 +194,7 @@ input[type=radio]:first-child {
 }
 @media (max-width: 510px) {
   .trivia__creation {
-    margin-bottom: 200px;
+    margin-bottom: 100px;
   }
 }
 
@@ -250,7 +259,7 @@ input[type=radio]:first-child {
 }
 @media (max-width: 810px) {
   .spinner {
-    margin-top: 40px;
+    margin-top: 60px;
   }
 }
 
