@@ -142,7 +142,7 @@ const gradeResults = () => {
   arrayOfAnswers.forEach((el) => {
     let findSelected = () => {
       if (el.checked && el.classList[0] === "correctOne") {
-        results += 10;
+        results += 100;
       }
     };
     el.addEventListener("change", findSelected);
